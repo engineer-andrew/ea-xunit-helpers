@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAXUnitHelpers.Comparison", "src\EAXUnitHelpers.Comparison\EAXUnitHelpers.Comparison.csproj", "{E203DCF4-824D-4E0B-98BC-B168CEBFE740}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{93218E2D-627F-4F99-8E58-630F5F931DED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{30DFD049-1D4D-4CD7-8A7D-187ADD5002D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAXUnitHelpers.Comparison.Tests", "test\XUnitTestProject1\EAXUnitHelpers.Comparison.Tests.csproj", "{1F532142-AB49-4BE3-BF5A-2933245A4360}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E203DCF4-824D-4E0B-98BC-B168CEBFE740} = {93218E2D-627F-4F99-8E58-630F5F931DED}
+		{1F532142-AB49-4BE3-BF5A-2933245A4360} = {30DFD049-1D4D-4CD7-8A7D-187ADD5002D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79450C69-0283-42DF-AD33-7CD45BA8AE2E}
