@@ -9,6 +9,7 @@
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/engineer-andrew/ea-xunit-helpers</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
