@@ -1,10 +1,9 @@
-using EAXUnitHelpers.Comparison;
 using EAXUnitHelpers.Comparison.Tests.Models;
 using System;
 using Xunit;
 using Xunit.Sdk;
 
-namespace XUnitTestProject1
+namespace EAXUnitHelpers.Comparison.Tests
 {
     public class CustomObjectComparerTests
     {

@@ -68,16 +68,9 @@ namespace EAXUnitHelpers.Comparison
                 throw new EqualException($"A value of \"{expected}\"", $"A value of \"{actual}\"");
             }
 
-            PropertyInfo[] props;
-
-            if (includeAncestorProperties)
-            {
-                props = typeof(TObject).GetProperties();
-            }
-            else
-            {
-                props = typeof(TObject).GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
-            }
+            var props = includeAncestorProperties
+                ? typeof(TObject).GetProperties()
+                : typeof(TObject).GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
 
             if (propertiesToCheck != null)
             {
