@@ -3,13 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>0.0.2</Version>
+    <Version>1.0</Version>
     <Authors>Engineer Andrew</Authors>
     <Description>This package provides a custom comparator for objects and enumerables, recursively checking the values of each property on two objects.</Description>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryUrl>https://github.com/engineer-andrew/ea-xunit-helpers</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.0.2.0</AssemblyVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageProjectUrl>https://github.com/engineer-andrew/ea-xunit-helpers</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
