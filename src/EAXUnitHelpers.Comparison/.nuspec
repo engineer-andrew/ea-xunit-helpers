@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>EAXUnitHelpers.Comparison</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     <description>This package provides a custom comparator for objects and enumerables, recursively checking the values of each property on two objects.</description>
     <authors>Engineer Andrew</authors>
     <license type="expression">AGPL-3.0-or-later</license>

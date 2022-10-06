@@ -68,6 +68,19 @@ namespace EAXUnitHelpers.Comparison
                 throw new EqualException($"A value of \"{expected}\"", $"A value of \"{actual}\"");
             }
 
+            if (typeof(TObject).IsDateTime())
+            {
+                var actualDateTimeValue = Convert.ToDateTime(actual);
+                var expectedDateTimeValue = Convert.ToDateTime(expected);
+                if (DateTime.Compare(expectedDateTimeValue, actualDateTimeValue) != 0)
+                {
+                    throw new EqualException($"A value of \"{expectedDateTimeValue}\"",
+                        $"A value of \"{actualDateTimeValue}\"");
+                }
+
+                return true;
+            }
+
             var props = includeAncestorProperties
                 ? typeof(TObject).GetProperties()
                 : typeof(TObject).GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
@@ -133,13 +146,17 @@ namespace EAXUnitHelpers.Comparison
                 else if (prop.IsNonStringEnumerable())
                 {
                     // get the type of the object in the enumerable
-                    var objectType = prop.PropertyType.GetGenericArguments()[0];
-                    // create a List<objectType>
-                    var genericListType = typeof(List<>).MakeGenericType(objectType);
-                    // instantiate lists with the values in the enumerables;
-                    var expectedList = (IList)Activator.CreateInstance(genericListType, expectedValue);
-                    var actualList = (IList)Activator.CreateInstance(genericListType, actualValue);
-                    AreEnumerablesEqual((dynamic)expectedList, (dynamic)actualList, includeAncestorProperties);
+                    var genericArguments = prop.PropertyType.GetGenericArguments();
+                    if (genericArguments.Length > 0)
+                    {
+                        var objectType = genericArguments[0];
+                        // create a List<objectType>
+                        var genericListType = typeof(List<>).MakeGenericType(objectType);
+                        // instantiate lists with the values in the enumerables;
+                        var expectedList = (IList)Activator.CreateInstance(genericListType, expectedValue);
+                        var actualList = (IList)Activator.CreateInstance(genericListType, actualValue);
+                        AreEnumerablesEqual((dynamic)expectedList, (dynamic)actualList, includeAncestorProperties);
+                    }
                 }
                 else
                 {
