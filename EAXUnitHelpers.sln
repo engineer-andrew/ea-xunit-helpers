@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAXUnitHelpers.Comparison", "src\EAXUnitHelpers.Comparison\EAXUnitHelpers.Comparison.csproj", "{E203DCF4-824D-4E0B-98BC-B168CEBFE740}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{93218E2D-627F-4F99-8E58-630F5F931DED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{30DFD049-1D4D-4CD7-8A7D-187ADD5002D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAXUnitHelpers.Comparison.Tests", "test\XUnitTestProject1\EAXUnitHelpers.Comparison.Tests.csproj", "{1F532142-AB49-4BE3-BF5A-2933245A4360}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAXUnitHelpers.Comparison", "src\EAXUnitHelpers.Comparison\EAXUnitHelpers.Comparison.csproj", "{DF998F1D-6D68-4BF6-9230-E81D5086A016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAXUnitHelpers.Comparison.UnitTests", "test\EAXUnitHelpers.Comparison.UnitTests\EAXUnitHelpers.Comparison.UnitTests.csproj", "{227D3335-C951-465E-9A0F-186DCAF0834F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,21 +17,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E203DCF4-824D-4E0B-98BC-B168CEBFE740}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F532142-AB49-4BE3-BF5A-2933245A4360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF998F1D-6D68-4BF6-9230-E81D5086A016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF998F1D-6D68-4BF6-9230-E81D5086A016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF998F1D-6D68-4BF6-9230-E81D5086A016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF998F1D-6D68-4BF6-9230-E81D5086A016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227D3335-C951-465E-9A0F-186DCAF0834F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227D3335-C951-465E-9A0F-186DCAF0834F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227D3335-C951-465E-9A0F-186DCAF0834F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227D3335-C951-465E-9A0F-186DCAF0834F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E203DCF4-824D-4E0B-98BC-B168CEBFE740} = {93218E2D-627F-4F99-8E58-630F5F931DED}
-		{1F532142-AB49-4BE3-BF5A-2933245A4360} = {30DFD049-1D4D-4CD7-8A7D-187ADD5002D7}
+		{DF998F1D-6D68-4BF6-9230-E81D5086A016} = {93218E2D-627F-4F99-8E58-630F5F931DED}
+		{227D3335-C951-465E-9A0F-186DCAF0834F} = {30DFD049-1D4D-4CD7-8A7D-187ADD5002D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79450C69-0283-42DF-AD33-7CD45BA8AE2E}

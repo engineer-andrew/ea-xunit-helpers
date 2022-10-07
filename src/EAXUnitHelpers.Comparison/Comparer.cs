@@ -1,9 +1,6 @@
 ﻿using EAExtensions.PropertyInfoExtensions;
 using EAExtensions.TypeExtensions;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Xunit.Sdk;
 
@@ -85,7 +82,7 @@ namespace EAXUnitHelpers.Comparison
                 ? typeof(TObject).GetProperties()
                 : typeof(TObject).GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
 
-            if (propertiesToCheck != null)
+            if (propertiesToCheck != null && propertiesToCheck.Count > 0)
             {
                 props = props.Where(p => propertiesToCheck.Contains(p.Name)).ToArray();
             }
