@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EAXUnitHelpers.Comparison
+﻿namespace EAXUnitHelpers.Comparison
 {
     public class CustomObjectComparer<T> : IEqualityComparer<T>
     {
@@ -15,6 +12,7 @@ namespace EAXUnitHelpers.Comparison
         public CustomObjectComparer(bool includeAncestorProperties)
         {
             _includeAncestorProperties = includeAncestorProperties;
+            _props = new List<string>();
         }
 
         public CustomObjectComparer(List<string> props)
