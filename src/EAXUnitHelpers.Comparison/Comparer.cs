@@ -8,9 +8,25 @@ namespace EAXUnitHelpers.Comparison
 {
     internal class Comparer
     {
-        internal bool AreEnumerablesEqual<TEnumerable>(IEnumerable<TEnumerable> expectedEnumerable,
-            IEnumerable<TEnumerable> actualEnumerable, bool includeAncestorProperties, string propName = null, List<string> propertiesToCheck = null)
+        internal bool AreEnumerablesEqual<TEnumerable>(IEnumerable<TEnumerable>? expectedEnumerable,
+            IEnumerable<TEnumerable>? actualEnumerable, bool includeAncestorProperties, string? propName = null, List<string>? propertiesToCheck = null)
         {
+            // if both objects are null
+            if (expectedEnumerable == null)
+            {
+                if (actualEnumerable == null)
+                {
+                    return true;
+                }
+
+                throw EqualException.ForMismatchedValues("A null collection", $"A collection containing {actualEnumerable.Count()} objects");
+            }
+
+            if (actualEnumerable == null)
+            {
+                throw EqualException.ForMismatchedValues($"A collection containing {expectedEnumerable.Count()} objects", "A null collection");
+            }
+
             var expected = expectedEnumerable.ToList();
             var actual = actualEnumerable.ToList();
 
@@ -19,11 +35,11 @@ namespace EAXUnitHelpers.Comparison
             {
                 if (propName != null)
                 {
-                    throw new EqualException($"{expected.Count} items in {propName}",
+                    throw EqualException.ForMismatchedValues($"{expected.Count} items in {propName}",
                         $"{actual.Count} items in {propName}");
                 }
 
-                throw new EqualException($"{expected.Count} items", $"{actual.Count} items");
+                throw EqualException.ForMismatchedValues($"{expected.Count} items", $"{actual.Count} items");
             }
 
             // if the list of expected items has nothing in it (at this point that means the list of actual items also has nothing in it)
@@ -38,9 +54,9 @@ namespace EAXUnitHelpers.Comparison
                 // if what we have is something like a List<string> then we don't want to get properties, we just want to compare the items to each other
                 for (var i = 0; i < expected.Count; i++)
                 {
-                    if (!expected[i].Equals(actual[i]))
+                    if (!expected[i]!.Equals(actual[i]))
                     {
-                        throw new EqualException($"A value of \"{expected[i]}\"", $"A value of \"{actual[i]}\"");
+                        throw EqualException.ForMismatchedValues($"A value of \"{expected[i]}\" in position {i}", $"A value of \"{actual[i]}\" in position {i}");
                     }
                 }
             }
@@ -56,13 +72,13 @@ namespace EAXUnitHelpers.Comparison
             return true;
         }
 
-        internal bool AreObjectsEqual<TObject>(TObject expected, TObject actual, bool includeAncestorProperties, List<string> propertiesToCheck = null)
+        internal bool AreObjectsEqual<TObject>(TObject expected, TObject actual, bool includeAncestorProperties, List<string>? propertiesToCheck = null)
         {
             // check if the object to compare is a primitive type, a nullable primitive type, a string, or a decimal
             // if the object to compare is a simple (see above) type, use the built-in object value comparator (.Equals) to compare the two objects
-            if (typeof(TObject).IsSimple() && !expected.Equals(actual))
+            if (typeof(TObject).IsSimple() && !expected!.Equals(actual))
             {
-                throw new EqualException($"A value of \"{expected}\"", $"A value of \"{actual}\"");
+                throw EqualException.ForMismatchedValues($"A value of \"{expected}\"", $"A value of \"{actual}\"");
             }
 
             if (typeof(TObject).IsDateTime())
@@ -71,7 +87,7 @@ namespace EAXUnitHelpers.Comparison
                 var expectedDateTimeValue = Convert.ToDateTime(expected);
                 if (DateTime.Compare(expectedDateTimeValue, actualDateTimeValue) != 0)
                 {
-                    throw new EqualException($"A value of \"{expectedDateTimeValue}\"",
+                    throw EqualException.ForMismatchedValues($"A value of \"{expectedDateTimeValue}\"",
                         $"A value of \"{actualDateTimeValue}\"");
                 }
 
@@ -102,21 +118,20 @@ namespace EAXUnitHelpers.Comparison
                         continue;
                     }
 
-                    throw new EqualException($"A value of null for property \"{prop.Name}\"",
+                    throw EqualException.ForMismatchedValues($"A value of null for property \"{prop.Name}\"",
                         $"A value of \"{actualValue}\" for property \"{prop.Name}\"");
                 }
 
                 if (actualValue == null)
                 {
-                    throw new EqualException($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
-                        $"A value of null for property \"{prop.Name}\"");
+                    throw EqualException.ForMismatchedValues($"A value of \"{expectedValue}\" for property \"{prop.Name}\"", $"A value of null for property \"{prop.Name}\"");
                 }
 
                 if (prop.PropertyType.IsSimple())
                 {
                     if (!expectedValue.Equals(actualValue))
                     {
-                        throw new EqualException($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
+                        throw EqualException.ForMismatchedValues($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
                             $"A value of \"{actualValue}\" for property \"{prop.Name}\"");
                     }
                 }
@@ -126,7 +141,7 @@ namespace EAXUnitHelpers.Comparison
                     var expectedDateTimeValue = (DateTime)expectedValue;
                     if (DateTime.Compare(expectedDateTimeValue, actualDateTimeValue) != 0)
                     {
-                        throw new EqualException($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
+                        throw EqualException.ForMismatchedValues($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
                             $"A value of \"{actualValue}\" for property \"{prop.Name}\"");
                     }
                 }
@@ -136,7 +151,7 @@ namespace EAXUnitHelpers.Comparison
                     var expectedDateTimeOffsetValue = (DateTimeOffset)expectedValue;
                     if (DateTimeOffset.Compare(expectedDateTimeOffsetValue, actualDateTimeOffsetValue) != 0)
                     {
-                        throw new EqualException($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
+                        throw EqualException.ForMismatchedValues($"A value of \"{expectedValue}\" for property \"{prop.Name}\"",
                             $"A value of \"{actualValue}\" for property \"{prop.Name}\"");
                     }
                 }
@@ -150,9 +165,9 @@ namespace EAXUnitHelpers.Comparison
                         // create a List<objectType>
                         var genericListType = typeof(List<>).MakeGenericType(objectType);
                         // instantiate lists with the values in the enumerables;
-                        var expectedList = (IList)Activator.CreateInstance(genericListType, expectedValue);
-                        var actualList = (IList)Activator.CreateInstance(genericListType, actualValue);
-                        AreEnumerablesEqual((dynamic)expectedList, (dynamic)actualList, includeAncestorProperties);
+                        var expectedList = Activator.CreateInstance(genericListType, expectedValue) as IList;
+                        var actualList = Activator.CreateInstance(genericListType, actualValue) as IList;
+                        AreEnumerablesEqual(expectedList as dynamic, actualList as dynamic, includeAncestorProperties, prop.Name);
                     }
                 }
                 else
