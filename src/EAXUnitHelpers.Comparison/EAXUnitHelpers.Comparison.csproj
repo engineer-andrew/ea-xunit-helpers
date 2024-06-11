@@ -5,12 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<IsPackable>true</IsPackable>
-	<VersionPrefix>6.0.0</VersionPrefix>
+	<VersionPrefix>8.0.0</VersionPrefix>
 	<Authors>Engineer Andrew</Authors>
 	<Description>This package provides a custom comparator for objects and enumerables, recursively checking the values of each property on two objects.</Description>
 	<PackageProjectUrl>https://github.com/engineer-andrew/ea-xunit-helpers</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/engineer-andrew/ea-xunit-helpers</RepositoryUrl>
 	<PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+	<PackageTags>XUnit</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
